@@ -239,16 +239,7 @@ class MailNFePHP {
                 //para cada endereço de email encontrado na NFe
                 foreach($email as $mail){
                     $aMail['para'] = $mail;
-					
-					//Verifica a existência de arquivo PDF para a referida chave na pasta pdf e envia junto ao XML
-					$nomePDF = 'NFe'.$chave.'.pdf';
-					$docPDF = $this->pdfDir.$nomePDF;
-					if( !is_file($this->pdfDir.$nomePDF) ){
-						$docPDF = '';
-						$nomePDF = '';
-					}
-					
-                    if ( !$this->sendNFe($docXML,$docPDF,$nomeXML,$nomePDF,$aMail,'1') ){
+                    if ( !$this->sendNFe($docXML,'',$nomeXML,'',$aMail,'1') ){
                         $this->mailERROR .= 'Falha ao enviar para '.$mail.'!! ';
                         $retorno = false;
                     }
